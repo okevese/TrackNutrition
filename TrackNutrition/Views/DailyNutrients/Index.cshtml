@@ -4,24 +4,18 @@
     ViewData["Title"] = "Keep track of your daily nutrition";
 }
 
-<div class="panel panel-default nutrient-panel">
+<div class="table-responsive">
     <div class="panel-heading">@ViewData["Title"]</div>
-    <table class="table table-hover">
+    <table class="table table-striped table-hover table-bordered">
         <thead>
             <tr>
-                <td>Protein</td>
-                <td>Protein Quantity</td>
-                <td>Grains</td>
-                <td>Grain Quantity</td>
-                <td>Fruits</td>
-                <td>Fruit Quantity</td>
-                <td>Oils</td>
-                <td>Oil Quantity</td>
-                <td>Dairy</td>
-                <td>Dairy Quantity</td>
-                <td>Vegetables</td>
-                <td>Vegetable Quantity</td>
                 <td>Date</td>
+                <td>Protein (oz.)</td>
+                <td>Grains (oz.)</td>
+                <td>Fruits (cup)</td>
+                <td>Oils (g)</td>
+                <td>Dairy (cup)</td>
+                <td>Vegetables (cup)</td>
                 <td>Calories</td>
                 <td>Comment</td>
             </tr>
@@ -29,19 +23,13 @@
         @foreach (var nutrient in Model.DailyNutrients)
         {
             <tr>
-                <td>@nutrient.Proteins</td>
-                <td>@nutrient.ProteinQuantity</td>
-                <td>@nutrient.Grains</td>
-                <td>@nutrient.GrainQuantity</td>
-                <td>@nutrient.Fruits</td>
-                <td>@nutrient.FruitQuantity</td>
-                <td>@nutrient.Oils</td>
-                <td>@nutrient.OilQuantity</td>
-                <td>@nutrient.Dairy</td>
-                <td>@nutrient.DairyQuantity</td>
-                <td>@nutrient.Vegetables</td>
-                <td>@nutrient.VegetableQuantity</td>
                 <td>@nutrient.CreateDate</td>
+                <td>@nutrient.Proteins @nutrient.ProteinQuantity</td>
+                <td>@nutrient.Grains @nutrient.GrainQuantity</td>
+                <td>@nutrient.Fruits @nutrient.FruitQuantity</td>
+                <td>@nutrient.Oils @nutrient.OilQuantity</td>
+                <td>@nutrient.Dairy @nutrient.DairyQuantity</td>
+                <td>@nutrient.Vegetables @nutrient.VegetableQuantity</td>
                 <td>@nutrient.Calories</td>
                 <td>@nutrient.Comment</td>
             </tr>

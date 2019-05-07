@@ -44,7 +44,7 @@ namespace TrackNutrition.Services
                 VegetableQuantity = 2,
                 Calories = 2100,
                 Comment = "Reaserch on foods with sodium",
-                CreateDate = new DateTime(2019, 5, 7)
+                CreateDate = DateTime.Today          
             };
 
             return Task.FromResult(new[] { nutrient1, nutrient2 });

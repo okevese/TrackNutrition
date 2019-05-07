@@ -1,4 +1,5 @@
 @model DailyNutrientViewModel
+@using Humanizer
 
 @{
     ViewData["Title"] = "Keep track of your daily nutrition";
@@ -24,7 +25,7 @@
         @foreach (var nutrient in Model.DailyNutrients)
         {
             <tr>
-                <td>@nutrient.CreateDate</td>
+                <td>@nutrient.CreateDate.Humanize()</td>
                 <td>@nutrient.Proteins @nutrient.ProteinQuantity oz</td>
                 <td>@nutrient.Grains @nutrient.GrainQuantity oz </td>
                 <td>@nutrient.Fruits @nutrient.FruitQuantity cups</td>

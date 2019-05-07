@@ -4,7 +4,7 @@
     ViewData["Title"] = "Keep track of your daily nutrition";
 }
 
-<div class="table-responsive">
+<div class="table-responsive nutrients-panel">
     <div class="panel-heading">@ViewData["Title"]</div>
     <table class="table table-striped table-hover table-bordered">
         <thead>
@@ -20,6 +20,7 @@
                 <td>Comment</td>
             </tr>
         </thead>
+        <tbody>
         @foreach (var nutrient in Model.DailyNutrients)
         {
             <tr>
@@ -34,6 +35,7 @@
                 <td>@nutrient.Comment</td>
             </tr>
         }
+        </tbody>
     </table>
 
     <div class="panel-footer add-dailynutrient-form">

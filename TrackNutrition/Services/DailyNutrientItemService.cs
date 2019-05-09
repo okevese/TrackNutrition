@@ -19,5 +19,16 @@ namespace TrackNutrition.Services
             return await _context.Nutrients
                 .ToArrayAsync();
         }
+
+        public async Task<bool> AddNutrientAsync(DailyNutrientItem newEntry)
+        {
+            newEntry.Id = Guid.NewGuid();
+            newEntry.CreateDate = DateTime.UtcNow;
+
+            _context.Nutrients.Add(newEntry);
+
+            var saveResult = await _context.SaveChangesAsync();
+            return saveResult == 1;
+        }
     }
 }

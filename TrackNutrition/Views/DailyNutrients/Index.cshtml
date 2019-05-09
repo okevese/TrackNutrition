@@ -39,7 +39,7 @@
         </tbody>
     </table>
 
-    <div class="panel-footer add-dailynutrient-form">
-        <!-- TODO: Add food nutrients form -->
+    <div class="add-dailynutrient-form">
+        @await Html.PartialAsync("AddNutrientsPartial", new DailyNutrientItem())
     </div>
 </div>

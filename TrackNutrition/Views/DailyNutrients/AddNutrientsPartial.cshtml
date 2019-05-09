@@ -1,0 +1,79 @@
+@model DailyNutrientItem
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#exampleModal">
+  Add daily nutrients
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New daily nutrients</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- FORM FOR NEW DAILY NUTRIENT -->
+                <form asp-action="AddNutrients" method="POST">
+                    <div class="form-group row">
+                        <label asp-for="Proteins" class="col-sm-2 col-form-label col-form-label">Protein</label>
+                        <div class="col-sm-8">
+                            <input asp-for="Proteins" class="form-control form-control" placeholder="ounces">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Grains" class="col-sm-2 col-form-label">Grains</label>
+                        <div class="col-sm-8">
+                            <input asp-for="Grains" class="form-control" placeholder="ounces">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Fruits" class="col-sm-2 col-form-label col-form-label">Fruits</label>
+                        <div class="col-sm-8">
+                            <input asp-for="Fruits" class="form-control form-control" placeholder="cups">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Oils" class="col-sm-2 col-form-label col-form-label">Oils</label>
+                        <div class="col-sm-8">
+                            <input asp-for="Oils" class="form-control form-control" placeholder="Teaspoons">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Dairy" class="col-sm-2 col-form-label col-form-label">Dairy</label>
+                        <div class="col-sm-8">
+                            <input asp-for="Dairy" class="form-control form-control" placeholder="cups">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Vegetables" class="col-sm-2 col-form-label col-form-label">Vegetables</label>
+                        <div class="col-sm-8">
+                            <input asp-for="Vegetables" class="form-control form-control" placeholder="cups">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Calories" class="col-sm-2 col-form-label col-form-label">Calories</label>
+                        <div class="col-sm-8">
+                            <input asp-for="Calories" class="form-control form-control" placeholder="kcal">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="Comment" class="col-sm-2 col-form-label col-form-label">Comments</label>
+                        <div class="col-sm-8">
+                            <textarea asp-for="Comment" class="form-control" rows="3"></textarea>
+                            <!--<input type="email" class="form-control form-control" id="comment" placeholder="Type a comment">-->
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

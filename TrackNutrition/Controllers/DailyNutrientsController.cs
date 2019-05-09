@@ -29,5 +29,20 @@ namespace TrackNutrition.Controllers
 
             return View(model);
         }
+        
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddNutrients(DailyNutrientItem newEntry)
+        {
+            if(!ModelState.IsValid) 
+            {
+                return RedirectToAction("Index");
+            }
+            var successful = await _dailyNutrientItemService.AddNutrientAsync(newEntry);
+            if (!successful) 
+            {
+                return BadRequest("Could not add nutrients");
+            }
+            return RedirectToAction("Index");
+        }
     }
 }

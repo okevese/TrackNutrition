@@ -23,7 +23,8 @@ namespace TrackNutrition.Services
         public async Task<bool> AddNutrientAsync(DailyNutrientItem newEntry)
         {
             newEntry.Id = Guid.NewGuid();
-            newEntry.CreateDate = DateTime.UtcNow;
+            newEntry.CreateDate = DateTime.Now.AddMinutes(-60);
+            
 
             _context.Nutrients.Add(newEntry);
 

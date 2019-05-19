@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using TrackNutrition.Services;
 using TrackNutrition.Models;
 
@@ -10,6 +11,7 @@ namespace TrackNutrition.Controllers
 {
     // Details the macro and micro nutrients needed for each day and keeps track
     // of the quantity taken and the energy values
+    [Authorize]
     public class DailyNutrientsController : Controller
     {
         private readonly IDailyNutrientItemService _dailyNutrientItemService;

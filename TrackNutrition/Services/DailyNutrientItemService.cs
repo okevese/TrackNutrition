@@ -31,5 +31,18 @@ namespace TrackNutrition.Services
             var saveResult = await _context.SaveChangesAsync();
             return saveResult == 1;
         }
+
+
+        public async Task<bool> DeleteEntryAsync(Guid id)
+        {
+            var nutrientsEntry = await _context.Nutrients
+                .Where(x => x.Id == id)
+                .SingleOrDefaultAsync();
+            if (nutrientsEntry == null) return false;
+            _context.Nutrients.Remove(nutrientsEntry);
+            var saveResult = await _context.SaveChangesAsync();
+            
+            return saveResult == 1;
+        }
     }
 }

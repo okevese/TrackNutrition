@@ -26,14 +26,20 @@
         {
             <tr>
                 <td>@nutrient.CreateDate.Humanize()</td>
-                <td>@nutrient.Proteins @nutrient.ProteinQuantity oz</td>
-                <td>@nutrient.Grains @nutrient.GrainQuantity oz </td>
-                <td>@nutrient.Fruits @nutrient.FruitQuantity cups</td>
-                <td>@nutrient.Oils @nutrient.OilQuantity Tbsp</td>
-                <td>@nutrient.Dairy @nutrient.DairyQuantity g</td>
-                <td>@nutrient.Vegetables @nutrient.VegetableQuantity oz</td>
+                <td>@nutrient.Proteins <br /> @nutrient.ProteinQuantity oz</td>
+                <td>@nutrient.Grains <br /> @nutrient.GrainQuantity oz </td>
+                <td>@nutrient.Fruits <br /> @nutrient.FruitQuantity cups</td>
+                <td>@nutrient.Oils <br /> @nutrient.OilQuantity Tbsp</td>
+                <td>@nutrient.Dairy <br /> @nutrient.DairyQuantity g</td>
+                <td>@nutrient.Vegetables <br /> @nutrient.VegetableQuantity oz</td>
                 <td>@nutrient.Calories</td>
                 <td>@nutrient.Comment</td>
+                <td>
+                    <form asp-action="DeleteEntry" method="POST">
+                        <input type="checkbox" class="todelete">
+                        <input type="hidden" name="id" value="@nutrient.Id">
+                    </form>
+                </td>
             </tr>
         }
         </tbody>

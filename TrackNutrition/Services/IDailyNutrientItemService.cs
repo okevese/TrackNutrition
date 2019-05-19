@@ -9,5 +9,6 @@ namespace TrackNutrition.Services
     {
         Task<DailyNutrientItem[]> GetAllDailyNutrientsAsync();
         Task<bool> AddNutrientAsync(DailyNutrientItem newEntry);
+        Task<bool> DeleteEntryAsync(Guid id);
     }
 }

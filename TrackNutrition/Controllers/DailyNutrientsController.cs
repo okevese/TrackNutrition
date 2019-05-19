@@ -29,6 +29,7 @@ namespace TrackNutrition.Controllers
 
             return View(model);
         }
+
         
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddNutrients(DailyNutrientItem newEntry)
@@ -42,6 +43,23 @@ namespace TrackNutrition.Controllers
             {
                 return BadRequest("Could not add nutrients");
             }
+            return RedirectToAction("Index");
+        }
+
+
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteEntry(Guid id)
+        {
+            if (id == Guid.Empty)
+            {
+                return RedirectToAction("Index");
+            }
+            var successful = await _dailyNutrientItemService.DeleteEntryAsync(id);
+            if (!successful)
+            {
+                return BadRequest("Could not delete entry");
+            }
+
             return RedirectToAction("Index");
         }
     }

@@ -146,3 +146,8 @@ blockquote {
   text-align: center;
 }
 */
+
+table tr .deleted {
+  text-decoration: line-through;
+  color: #888;
+}

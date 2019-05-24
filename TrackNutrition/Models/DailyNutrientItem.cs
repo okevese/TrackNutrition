@@ -22,5 +22,6 @@ namespace TrackNutrition.Models
         [DataType(DataType.Date)]
         public DateTime CreateDate { get; set; }
         public string Comment { get; set; }
+        public string UserId { get; set; }
     }
 }

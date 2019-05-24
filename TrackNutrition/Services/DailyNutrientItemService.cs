@@ -17,6 +17,7 @@ namespace TrackNutrition.Services
         public async Task<DailyNutrientItem[]> GetAllDailyNutrientsAsync(ApplicationUser user)
         {
             return await _context.Nutrients
+                .Where(x => x.UserId == user.Id)
                 .ToArrayAsync();
         }
 

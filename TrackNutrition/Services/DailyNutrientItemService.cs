@@ -14,7 +14,7 @@ namespace TrackNutrition.Services
 
         public DailyNutrientItemService(ApplicationDbContext context) => _context = context;
 
-        public async Task<DailyNutrientItem[]> GetAllDailyNutrientsAsync()
+        public async Task<DailyNutrientItem[]> GetAllDailyNutrientsAsync(ApplicationUser user)
         {
             return await _context.Nutrients
                 .ToArrayAsync();

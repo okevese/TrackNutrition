@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using TrackNutrition.Services;
 using TrackNutrition.Models;
 
@@ -15,14 +16,21 @@ namespace TrackNutrition.Controllers
     public class DailyNutrientsController : Controller
     {
         private readonly IDailyNutrientItemService _dailyNutrientItemService;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public DailyNutrientsController(IDailyNutrientItemService dailyNutrientItemService)
+        public DailyNutrientsController(IDailyNutrientItemService dailyNutrientItemService,
+            UserManager<ApplicationUser> userManager)
         {
             _dailyNutrientItemService = dailyNutrientItemService;
+            _userManager = userManager;
         }
+
         public async Task<IActionResult> Index()
         {
-            var nutrients = await _dailyNutrientItemService.GetAllDailyNutrientsAsync();
+            var currentUser = await _userManager.GetUserAsync(User);
+            if (currentUser == null) return Challenge();
+
+            var nutrients = await _dailyNutrientItemService.GetAllDailyNutrientsAsync(currentUser);
 
             var model = new DailyNutrientViewModel()
             {

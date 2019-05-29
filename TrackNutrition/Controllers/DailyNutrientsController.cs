@@ -48,7 +48,11 @@ namespace TrackNutrition.Controllers
             {
                 return RedirectToAction("Index");
             }
-            var successful = await _dailyNutrientItemService.AddNutrientAsync(newEntry);
+
+            var currentUser = await _userManager.GetUserAsync(User);
+            if (currentUser == null) return Challenge();
+
+            var successful = await _dailyNutrientItemService.AddNutrientAsync(newEntry, currentUser);
             if (!successful) 
             {
                 return BadRequest("Could not add nutrients");
@@ -64,7 +68,11 @@ namespace TrackNutrition.Controllers
             {
                 return RedirectToAction("Index");
             }
-            var successful = await _dailyNutrientItemService.DeleteEntryAsync(id);
+
+            var currentUser = await _userManager.GetUserAsync(User);
+            if (currentUser == null) return Challenge();
+
+            var successful = await _dailyNutrientItemService.DeleteEntryAsync(id, currentUser);
             if (!successful)
             {
                 return BadRequest("Could not delete entry");

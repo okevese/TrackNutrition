@@ -21,7 +21,8 @@ namespace TrackNutrition.Services
                 .ToArrayAsync();
         }
 
-        public async Task<bool> AddNutrientAsync(DailyNutrientItem newEntry)
+        public async Task<bool> AddNutrientAsync(
+            DailyNutrientItem newEntry, ApplicationUser user)
         {
             newEntry.Id = Guid.NewGuid();
             newEntry.CreateDate = DateTime.Now.AddMinutes(-60);
@@ -34,10 +35,11 @@ namespace TrackNutrition.Services
         }
 
 
-        public async Task<bool> DeleteEntryAsync(Guid id)
+        public async Task<bool> DeleteEntryAsync(
+            Guid id, ApplicationUser user)
         {
             var nutrientsEntry = await _context.Nutrients
-                .Where(x => x.Id == id)
+                .Where(x => x.Id == id && x.UserId == user.Id)
                 .SingleOrDefaultAsync();
             if (nutrientsEntry == null) return false;
             _context.Nutrients.Remove(nutrientsEntry);

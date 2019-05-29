@@ -8,7 +8,7 @@ namespace TrackNutrition.Services
     public interface IDailyNutrientItemService
     {
         Task<DailyNutrientItem[]> GetAllDailyNutrientsAsync(ApplicationUser user);
-        Task<bool> AddNutrientAsync(DailyNutrientItem newEntry);
-        Task<bool> DeleteEntryAsync(Guid id);
+        Task<bool> AddNutrientAsync(DailyNutrientItem newEntry, ApplicationUser user);
+        Task<bool> DeleteEntryAsync(Guid id, ApplicationUser user);
     }
 }

@@ -17,7 +17,7 @@ namespace TrackNutrition.Services
         public async Task<DailyNutrientItem[]> GetAllDailyNutrientsAsync(ApplicationUser user)
         {
             return await _context.Nutrients
-                .Where(x => x.UserId == user.Id)
+                .Where(x => x.UserId == user.Id) // UserId is null ?!
                 .ToArrayAsync();
         }
 
@@ -26,7 +26,7 @@ namespace TrackNutrition.Services
         {
             newEntry.Id = Guid.NewGuid();
             newEntry.CreateDate = DateTime.Now.AddMinutes(-60);
-            
+            newEntry.UserId = user.Id;
 
             _context.Nutrients.Add(newEntry);
 
